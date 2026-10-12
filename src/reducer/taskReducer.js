@@ -1,5 +1,7 @@
 function taskReducer(tasks, action) {
   switch (action.type) {
+    case "LOAD_TASKS":
+    return action.payload;
     case "ADD_TASK":
       return [...tasks, action.payload];
 
