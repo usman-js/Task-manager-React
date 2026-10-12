@@ -1,9 +1,19 @@
 
+import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "./TaskCard";
 
 function Column({ title, status, tasks, onDelete, onEdit, onMove }) {
+  const { setNodeRef, isOver } = useDroppable({
+    id: status,
+  });
+
   return (
-    <div className="min-h-64 rounded-xl bg-slate-100 p-4">
+    <div
+      ref={setNodeRef}
+      className={`min-h-64 rounded-xl p-4 transition-colors ${
+        isOver ? "bg-indigo-100 ring-2 ring-indigo-400" : "bg-slate-100"
+      }`}
+    >
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-semibold text-slate-800">
           {title}
